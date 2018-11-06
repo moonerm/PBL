@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title=""
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:id="@+id/bottom_home"/>
+
+    <item android:title="" app:showAsAction="ifRoom" android:enabled="true" android:icon="@drawable/ic_decibel" android:id="@+id/bottom_decibel"/>
+    <item android:title="" app:showAsAction="ifRoom" android:enabled="true" android:icon="@drawable/ic_clearly" android:id="@+id/bottom_clearly"/>
+    <item android:title="" app:showAsAction="ifRoom" android:enabled="true" android:icon="@drawable/ic_mypage" android:id="@+id/bottom_mypage"/>
+</menu>

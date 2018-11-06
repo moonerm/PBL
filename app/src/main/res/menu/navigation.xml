@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/menu_alram"
+        android:icon="@drawable/ic_action_name"
+        android:title="알람"
+        />
+
+    <item
+        android:id="@+id/menu_theme"
+        android:icon="@drawable/ic_action_name"
+        android:title="테마"
+        />
+
+    <!--<item-->
+        <!--android:id="@+id/navigation_decibel"-->
+        <!--android:icon="@drawable/ic_navigation_decibel"-->
+        <!--android:title=""-->
+        <!--android:enabled="true"-->
+        <!--app:showAsAction="ifRoom"/>-->
+
+    <!--<item-->
+        <!--android:id="@+id/navigation_pronunciation"-->
+        <!--android:icon="@drawable/ic_navigation_pronunciation"-->
+        <!--android:title=""-->
+        <!--android:enabled="true"-->
+        <!--app:showAsAction="ifRoom"/>-->
+
+    <!--<item-->
+        <!--android:id="@+id/navigation_mypage"-->
+        <!--android:icon="@drawable/ic_navigation_mypage"-->
+        <!--android:title=""-->
+        <!--android:enabled="true"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--/>-->
+
+</menu>
