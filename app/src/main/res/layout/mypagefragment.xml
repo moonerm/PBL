@@ -1,21 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mypage"
+    android:orientation="vertical"
+    android:background="@android:color/white"
     >
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_purple"
-        android:gravity="center">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
 
-        <TextView
-            android:text="mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주간 목표 달성률"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="단일 막대 그래프 넣을 곳"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주간 학습량"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="다중 막대 그래프 넣을 곳"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월간 향상도"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="꺽은선 그래프 넣을 곳"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
+
+
 </LinearLayout>

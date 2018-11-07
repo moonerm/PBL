@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -55,21 +56,22 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bottom_home:
-                    mTextMessage.setText("홈입니당");
+                    getFragmentManager().beginTransaction().replace(R.id.main_fragment,new homefragment()).commit();
                     break;
                 case R.id.bottom_decibel:
-                    mTextMessage.setText("데시벨측정");
+                    getFragmentManager().beginTransaction().replace(R.id.main_fragment,new decibelfragment()).commit();
                     break;
                 case R.id.bottom_clearly:
-                    mTextMessage.setText("정확하게발음하시고요 !");
+                    getFragmentManager().beginTransaction().replace(R.id.main_fragment,new clearlyfragment()).commit();
                     break;
                 case R.id.bottom_mypage:
-                    mTextMessage.setText("제 페이지예용");
+                    getFragmentManager().beginTransaction().replace(R.id.main_fragment,new mypagefragment()).commit();
                     break;
             }
             return true;
         }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                if(item.getItemId() == R.id.menu_theme){
-                    getFragmentManager().beginTransaction().replace(R.id.main_fragment, new themefragment()).commit();
+                if(item.getItemId() == R.id.menu_notice){
+                    getFragmentManager().beginTransaction().replace(R.id.main_fragment, new noticefragment()).commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
 
