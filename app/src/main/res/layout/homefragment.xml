@@ -30,8 +30,12 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:background="@drawable/graph_shape"
         >
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/BarChart">
+        </com.github.mikephil.charting.charts.BarChart>
     </LinearLayout>
 
     <LinearLayout
@@ -52,6 +56,17 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 바름"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
