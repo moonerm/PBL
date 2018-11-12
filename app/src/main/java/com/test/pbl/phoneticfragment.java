@@ -14,7 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class phoneticfragment extends Fragment {
     Intent intent;
     SpeechRecognizer mRecognizer;
     TextView textView;
-    Button button;
+    ImageButton button;
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     @Nullable
     @Override
@@ -60,7 +60,7 @@ public class phoneticfragment extends Fragment {
 
         textView = (TextView)view.findViewById(R.id.textView);//fVBI를 fragment로 바꿀때: getView()를 앞에 붙인다
 
-        button = (Button)view.findViewById(R.id.button1);//view.으로도 하는 듯..
+        button = (ImageButton)view.findViewById(R.id.button1);//view.으로도 하는 듯..
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

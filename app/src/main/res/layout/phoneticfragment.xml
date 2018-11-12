@@ -2,46 +2,56 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <!--android:gravity="center"-->
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edt_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#000000"
-            android:singleLine="true" />
-
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search" />
-
-    </LinearLayout>
+    android:layout_height="fill_parent"
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="pronounced" />
+        android:gravity="center_horizontal"
+        android:text="아래를 참고하여\n발음 연습을 해보세요."
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_margin="15dp"/>
 
-    <Button
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="300dp"
+        android:layout_height="380dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/shape"
+            android:text="발음[바름]" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/shape" />
+    </LinearLayout>
+
+    <ImageButton
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start" />
-
-    <!-- <ListView
-         android:id="@+id/listview"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:listSelector="@android:color/transparent"></ListView>-->
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/mic" />
 
 </LinearLayout>
