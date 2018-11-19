@@ -56,7 +56,7 @@ public class mypagefragment extends Fragment {
         horizontalVal.add(new BarEntry(0,25));
         BarDataSet horizontalSet = new BarDataSet(horizontalVal, "Horizontal Bar Data Set");
         horizontalSet.setColors(Color.parseColor("#FAD064"));
-        horizontalSet.setDrawValues(false);  //사실 bar 옆에 value가 떴음 좋겠는데 이상하게 빗나가서 보류해둔다,,
+        horizontalSet.setDrawValues(false);  //사실 bar 옆에 value가 떴음 좋겠는데 이상하게 빗나가서 보류해둔다,,,
         BarData horizontalData = new BarData(horizontalSet);
         horizontalBar.setData(horizontalData);
 
