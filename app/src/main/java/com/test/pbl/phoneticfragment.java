@@ -37,7 +37,6 @@ public class phoneticfragment extends Fragment {
     static final ArrayList<String> HLIST = new ArrayList<>(); //즐겨찾기
     static final ArrayList<String> WRONG = new ArrayList<>(); //자주틀리는발음
 
-
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     @Nullable
     @Override

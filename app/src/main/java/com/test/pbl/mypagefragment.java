@@ -51,9 +51,14 @@ public class mypagefragment extends Fragment {
         horizontalBar.getDescription().setEnabled(false); //오른쪽 코너에 성가신 text 치우기
         horizontalBar.getLegend().setEnabled(false); //그래프 아래에 성가신 data set 정보도 치우기
 
+        int count = 0;
+        for (int i = 0; i < 7; i++ ){
+            count += homefragment.dayData[i];
+        }
+
         ArrayList<BarEntry> horizontalVal = new ArrayList<>();
 
-        horizontalVal.add(new BarEntry(0,25));
+        horizontalVal.add(new BarEntry(0, count));
         BarDataSet horizontalSet = new BarDataSet(horizontalVal, "Horizontal Bar Data Set");
         horizontalSet.setColors(Color.parseColor("#FAD064"));
         horizontalSet.setDrawValues(false);  //사실 bar 옆에 value가 떴음 좋겠는데 이상하게 빗나가서 보류해둔다,,,
@@ -62,7 +67,7 @@ public class mypagefragment extends Fragment {
 
         //막대그래프입니다
         mChart = (BarChart) view.findViewById(R.id.myChart);
-        mChart.setMaxVisibleValueCount(50);
+        mChart.getAxisLeft().setAxisMinimum(0f); //0부터 시작합시다
         mChart.setPinchZoom(false);
         mChart.setBackgroundColor(Color.WHITE); //백그라운드는 흰색으로
         mChart.getAxisRight().setDrawGridLines(false);
@@ -78,15 +83,19 @@ public class mypagefragment extends Fragment {
 
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
-
-        //여기는 데이터를 받아 올 자리
-        barEntries.add(new BarEntry(1, 40f));
-        barEntries.add(new BarEntry(2, 30f));
-        barEntries.add(new BarEntry(3, 10f));
-        barEntries.add(new BarEntry(4, 50f));
-        barEntries.add(new BarEntry(5, 60f));
-        barEntries.add(new BarEntry(6, 35f));
-        barEntries.add(new BarEntry(7, 10f));
+        if (homefragment.nDay == 2) {  // 월요일마다 데이터 초기화
+            barEntries.add(new BarEntry(2, 0));
+            barEntries.add(new BarEntry(3, 0));
+            barEntries.add(new BarEntry(4, 0));
+            barEntries.add(new BarEntry(5, 0));
+            barEntries.add(new BarEntry(6, 0));
+            barEntries.add(new BarEntry(7, 0));
+            barEntries.set(homefragment.nDay-1, new BarEntry(homefragment.nDay-1, homefragment.dayData[homefragment.nDay-1]));
+        } else {
+            for (int i = 0; i < 7; i++){
+                barEntries.add(new BarEntry(i+1, homefragment.dayData[i]));
+            }
+        }
 
         AxisBase axis;
 
@@ -94,7 +103,7 @@ public class mypagefragment extends Fragment {
         int dayNum = cal.get(Calendar.DAY_OF_WEEK);
         BarDataSet dataSet = new BarDataSet(barEntries, "Chart Data Set");
         dataSet.setDrawValues(false); //그래프 위에 데이터가 안 뜨게 함다
-        dataSet.setColors(Color.LTGRAY);
+        dataSet.setColors(Color.parseColor("#fad064"));
         BarData chartData = new BarData(dataSet);
         mChart.setData(chartData);
 
@@ -122,6 +131,7 @@ public class mypagefragment extends Fragment {
 
         ArrayList<Entry> lineEntries = new ArrayList<>();
 
+
         lineEntries.add(new Entry(0, 60f));
         lineEntries.add(new Entry(1, 60f));
         lineEntries.add(new Entry(2, 50f));
@@ -129,6 +139,7 @@ public class mypagefragment extends Fragment {
         lineEntries.add(new Entry(4, 30f));
         lineEntries.add(new Entry(5, 50f));
         lineEntries.add(new Entry(6, 60f));
+
 
         LineDataSet set1 = new LineDataSet(lineEntries, "LineChart Data Set");
         set1.setFillAlpha(70);
@@ -138,6 +149,7 @@ public class mypagefragment extends Fragment {
         set1.setLineWidth(2f);
         set1.setCircleSize(5f);
         set1.setDrawValues(false);
+
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);

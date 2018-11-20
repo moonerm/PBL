@@ -36,16 +36,15 @@ public class MainActivity extends AppCompatActivity {
         if(mBackPressedListener != null){
             mBackPressedListener.onBack();
             Log.e("!!!", "Listener is not null");
-        } else {
+        } else {    //2초안에 뒤로가기 두번 누른 거 아니면 종료 안댐니다.
             Log.e("!!!", "Listener is null");
-            if (pressedTime == 0){
+            if (System.currentTimeMillis() > pressedTime + 2000){
                 Snackbar.make(findViewById(R.id.main_layout), "한 번 더 누르면 종료됩니다.", Snackbar.LENGTH_LONG).show();
-                pressedTime = 1;
-            } else {
+                pressedTime = System.currentTimeMillis();
+            } else if( System.currentTimeMillis() <= pressedTime + 2000) {
                 super.onBackPressed();
                 Log.e("!!!", "onBackPressed : finish, killProcess");
                 android.os.Process.killProcess(android.os.Process.myPid());
-                finish();
             }
         }
     }

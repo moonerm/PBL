@@ -45,7 +45,6 @@ public class homefragment extends Fragment {
                 dayData[nDay-2]++; }
         });
 
-        barChart.setMaxVisibleValueCount(50);
         barChart.setPinchZoom(false);
         barChart.setBackgroundColor(Color.WHITE); //백그라운드는 흰색으로
         barChart.getAxisRight().setDrawGridLines(false);
@@ -59,6 +58,7 @@ public class homefragment extends Fragment {
         barChart.getLegend().setEnabled(false); //그래프 아래에 성가신 data set 정보도 치우기
         barChart.setScaleEnabled(false);
         barChart.getAxisLeft().setAxisMinimum(0f);
+        barChart.getAxisLeft().setAxisMaximum(10f);
 
         ArrayList<BarEntry> barEntries = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class homefragment extends Fragment {
             barEntries.add(new BarEntry(5, 0));
             barEntries.add(new BarEntry(6, 0));
             barEntries.add(new BarEntry(7, 0));
-            barEntries.set(nDay-1, new BarEntry(nDay-1, dayData[nDay-2]));
+            barEntries.set(nDay-1, new BarEntry(nDay-1, dayData[nDay-1]));
         } else {
             for (int i = 0; i < 7; i++){
                 barEntries.add(new BarEntry(i+1, dayData[i]));
