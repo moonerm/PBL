@@ -3,109 +3,96 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="top|center"
+    android:gravity="center_horizontal"
     android:id="@+id/mypage"
     android:orientation="vertical"
+    android:layout_margin="1dp"
     android:background="@android:color/white"
     >
+
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_gravity="top|center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="주간 목표 달성률"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
+
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:id="@+id/horizontalChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="5dp"></com.github.mikephil.charting.charts.HorizontalBarChart>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="단일 막대 그래프 넣을 곳"
-                android:textColor="@color/colorPrimary"
-                android:textSize="13sp"
-                />
+                android:layout_marginTop="10dp"
+                android:text="주간 학습량"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/myChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></com.github.mikephil.charting.charts.BarChart>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="월       화       수       목       금       토       일"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="주간 학습량"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
-            <com.github.mikephil.charting.charts.BarChart
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/myChart">
-            </com.github.mikephil.charting.charts.BarChart>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="?actionBarSize"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
-                android:text="월       화       수       목       금       토       일"
-                android:textColor="@android:color/black"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="?actionBarSize">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="월간 향상도"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
             <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/lineChart">
+                android:layout_height="match_parent">
             </com.github.mikephil.charting.charts.LineChart>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="꺾은선 그래프 넣을 곳"
-                android:textColor="@color/colorPrimary"
-                android:textSize="13sp"
-                />
         </LinearLayout>
-
 
     </LinearLayout>
 
