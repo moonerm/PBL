@@ -51,7 +51,7 @@ public class vocabfragment extends Fragment {
                 print = phoneticfragment.HLIST;
                 break;
             case (4):
-                print = phoneticfragment.WRONG;
+                print = phoneticfragment.WRONG_P;
                 break;
         }
 
