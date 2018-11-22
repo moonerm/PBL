@@ -35,7 +35,9 @@ public class phoneticfragment extends Fragment {
     static final ArrayList<String> SENTENCE = new ArrayList<>();//문장
     static final ArrayList<String> NEW = new ArrayList<>(); //신조어
     static final ArrayList<String> HLIST = new ArrayList<>(); //즐겨찾기
-    static final ArrayList<String> WRONG = new ArrayList<>(); //자주틀리는발음
+    static final int[] WRONG = new int[15]; //자주틀리는발음횟수
+    static final ArrayList<String> WRONG_P = new ArrayList<>(); //자주틀리는발음
+
 
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     @Nullable
@@ -96,6 +98,7 @@ public class phoneticfragment extends Fragment {
                 }else {
                     Hbutton.setText("\u2606");
                 }
+                stext.setText(null);
             }
         });
 
@@ -113,6 +116,7 @@ public class phoneticfragment extends Fragment {
                 }else {
                     Hbutton.setText("\u2606");
                 }
+                stext.setText(null);
             }
         });
 
@@ -121,7 +125,6 @@ public class phoneticfragment extends Fragment {
             public void onClick(View view){
                 if(HLIST.contains(vocabfragment.print.get(index).toString())){
                     HLIST.remove(vocabfragment.print.get(index).toString());
-
                     Hbutton.setText("\u2606");
                 }else {
                     HLIST.add(vocabfragment.print.get(index).toString());
@@ -136,10 +139,9 @@ public class phoneticfragment extends Fragment {
 
         stext = (TextView)view.findViewById(R.id.speechText);//fVBI를 fragment로 바꿀때: getView()를 앞에 붙인다
         ptext = (TextView)view.findViewById(R.id.practiceText);
-        ptext.setText(vocabfragment.print.get(index).toString());
         if(vocabfragment.print.get(index).toString().equals(WORD.get(index).toString())){
             ptext.setText(vocabfragment.print.get(index).toString()+WORD_S[index]); // 단어를 선택했을 시 발음소리도 같이 출력
-        }
+        }else ptext.setText(vocabfragment.print.get(index).toString());
 
 
         button = (ImageButton)view.findViewById(R.id.button1);//view.으로도 하는 듯..
@@ -147,9 +149,70 @@ public class phoneticfragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mRecognizer.startListening(intent);
+                if(!vocabfragment.print.get(index).toString().equals(stext)) { //자주틀리는발음
+                    if (vocabfragment.print.equals(WORD)) {
+                        switch (index) {
+                            case 0:
+                                ++WRONG[index];
+                                break;
+                            case 1:
+                                ++WRONG[index];
+                                break;
+                            case 2:
+                                ++WRONG[index];
+                                break;
+                            case 3:
+                                ++WRONG[index];
+                                break;
+                            case 4:
+                                ++WRONG[index];
+                                break;
+                        }
+                        if(WRONG[index]>=5 && !WRONG_P.contains(WORD.get(index).toString())) WRONG_P.add(WORD.get(index).toString());
+                    } else if (vocabfragment.print.equals(SENTENCE)) {
+                        switch (index) {
+                            case 0:
+                                ++WRONG[index+5];
+                                break;
+                            case 1:
+                                ++WRONG[index+5];
+                                break;
+                            case 2:
+                                ++WRONG[index+5];
+                                break;
+                            case 3:
+                                ++WRONG[index+5];
+                                break;
+                            case 4:
+                                ++WRONG[index+5];
+                                break;
+                        }
+                        if(WRONG[index+5]>=5 && !WRONG_P.contains(SENTENCE.get(index).toString())) WRONG_P.add(SENTENCE.get(index).toString());
+                    } else {
+                        switch (index) {
+                            case 0:
+                                ++WRONG[index+10];
+                                break;
+                            case 1:
+                                ++WRONG[index+10];
+                                break;
+                            case 2:
+                                ++WRONG[index+10];
+                                break;
+                            case 3:
+                                ++WRONG[index+10];
+                                break;
+                            case 4:
+                                ++WRONG[index+10];
+                                break;
+                        }
+                        if(WRONG[index+10]>=5 && !WRONG_P.contains(NEW.get(index).toString())) WRONG_P.add(NEW.get(index).toString());
+                    }
+                }
                 stext.setText(null);
             }
         });
+
         return view;
 
 
@@ -189,11 +252,7 @@ public class phoneticfragment extends Fragment {
 
             String[] rs = new String[mResult.size()];
             mResult.toArray(rs);
-
             stext.setText(rs[0]);
-            if(!(vocabfragment.print.get(index).toString().equals(stext))){
-                //발음을 5번 틀리면 WROMG 배열에 입력하기
-            }
         }
 
         @Override
