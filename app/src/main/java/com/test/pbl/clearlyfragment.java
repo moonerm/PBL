@@ -56,7 +56,7 @@ public class clearlyfragment extends Fragment {
                             break;
                         case 4:
                             list = position;
-                            if(phoneticfragment.WRONG.isEmpty()){
+                            if(phoneticfragment.WRONG_P.isEmpty()){
                                 Toast.makeText(context, "아직 자주 틀리는 발음이 없습니다.", Toast.LENGTH_LONG).show();
                             }else{
                                 getFragmentManager().beginTransaction().replace(R.id.main_fragment, new vocabfragment()).commit();
@@ -68,4 +68,3 @@ public class clearlyfragment extends Fragment {
         return view;
     }
 }
-
