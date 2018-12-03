@@ -16,24 +16,8 @@ public class vocabfragment extends Fragment {
     static int pick;
     static ArrayList<String> print = new ArrayList<>();
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        phoneticfragment.WORD.add("발음");
-        phoneticfragment.WORD.add("속담");
-        phoneticfragment.WORD.add("한글");
-        phoneticfragment.WORD.add("맞춤법");
-        phoneticfragment.WORD.add("대학교");
-        phoneticfragment.SENTENCE.add("안녕하세요");
-        phoneticfragment.SENTENCE.add("반갑습니다");
-        phoneticfragment.SENTENCE.add("처음뵙겠습니다");
-        phoneticfragment.SENTENCE.add("감사합니다");
-        phoneticfragment.SENTENCE.add("수고하세요");
-        phoneticfragment.NEW.add("갑분싸");
-        phoneticfragment.NEW.add("소확행");
-        phoneticfragment.NEW.add("댕댕이");
-        phoneticfragment.NEW.add("자만추");
-        phoneticfragment.NEW.add("워라밸");
 
         View view = inflater.inflate(R.layout.vocabfragment, container, false);
 
