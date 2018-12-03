@@ -16,8 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+
 
 import java.util.ArrayList;
 
@@ -27,6 +31,7 @@ public class phoneticfragment extends Fragment {
     TextView stext, ptext; // stext : 사용자의 음성 ptext : 연습할 글
     ImageButton button;
     Button pre, next, Hbutton;
+    ImageView iv;
     int index = vocabfragment.pick;// 배열위치
     private Context context; //토스트메세지를 위한 Context
 
@@ -38,8 +43,8 @@ public class phoneticfragment extends Fragment {
     static final int[] WRONG = new int[15]; //자주틀리는발음횟수
     static final ArrayList<String> WRONG_P = new ArrayList<>(); //자주틀리는발음
 
-
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+
     @Nullable
     @Override
     public void onCreate(Bundle savedInstanceState){//프래그먼트가 생성될 때 호출되는 부분
@@ -52,6 +57,9 @@ public class phoneticfragment extends Fragment {
         View view = inflater.inflate(R.layout.phoneticfragment,container,false);
         super.onCreateView(inflater, container, savedInstanceState);
         context = container.getContext();
+
+
+
         //setContentView(R.layout.activity_main);
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO)//this를 다 getActivity로 바꿔본다
                 //getActivity가 context라는 블로거의 말을 믿는다
@@ -74,6 +82,9 @@ public class phoneticfragment extends Fragment {
 
         mRecognizer = SpeechRecognizer.createSpeechRecognizer(getActivity());
         mRecognizer.setRecognitionListener(recognitionListener);
+
+        final ImageView iv = view.findViewById(R.id.iv);
+        gif();
 
         pre = (Button)view.findViewById(R.id.pre);
         next = (Button)view.findViewById(R.id.next);
@@ -99,6 +110,7 @@ public class phoneticfragment extends Fragment {
                     Hbutton.setText("\u2606");
                 }
                 stext.setText(null);
+                gif();
             }
         });
 
@@ -117,6 +129,7 @@ public class phoneticfragment extends Fragment {
                     Hbutton.setText("\u2606");
                 }
                 stext.setText(null);
+                gif();
             }
         });
 
@@ -263,4 +276,23 @@ public class phoneticfragment extends Fragment {
         public void onEvent(int i, Bundle bundle) {
         }
     };
+
+    void gif(){ //발음마다 정해진 gif파일 불러오기
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(0).toString())) Glide.with(this).load(R.raw.pronunciation).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(1).toString())) Glide.with(this).load(R.raw.says).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(2).toString())) Glide.with(this).load(R.raw.hangeul).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(3).toString())) Glide.with(this).load(R.raw.spell).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(4).toString())) Glide.with(this).load(R.raw.univ).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(0).toString())) Glide.with(this).load(R.raw.hello).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(1).toString())) Glide.with(this).load(R.raw.ntmy).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(2).toString())) Glide.with(this).load(R.raw.hdyd).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(3).toString())) Glide.with(this).load(R.raw.thanks).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(4).toString())) Glide.with(this).load(R.raw.taketrouble).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(0).toString())) Glide.with(this).load(R.raw.gapbunsha).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(1).toString())) Glide.with(this).load(R.raw.sohackhang).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(2).toString())) Glide.with(this).load(R.raw.dengdengee).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(3).toString())) Glide.with(this).load(R.raw.naturemeet).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(4).toString())) Glide.with(this).load(R.raw.worklifeb).into(iv);
+
+    }
 }
