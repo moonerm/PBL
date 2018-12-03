@@ -21,9 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 
 
 import java.util.ArrayList;
+
 
 public class phoneticfragment extends Fragment {
     Intent intent;
@@ -31,9 +33,8 @@ public class phoneticfragment extends Fragment {
     TextView stext, ptext; // stext : 사용자의 음성 ptext : 연습할 글
     ImageButton button;
     Button pre, next, Hbutton;
-    ImageView iv;
     int index = vocabfragment.pick;// 배열위치
-    private Context context; //토스트메세지를 위한 Context
+    private Context context, mcontext; //토스트메세지를 위한 Context
 
     static final ArrayList<String> WORD = new ArrayList<>(); //단어
     static final String[] WORD_S = {"[바름]", "[속땀]","[한:글]", "[맏춤뻡]", "[대:학꾜]"}; // 단어 발음소리
@@ -42,8 +43,8 @@ public class phoneticfragment extends Fragment {
     static final ArrayList<String> HLIST = new ArrayList<>(); //즐겨찾기
     static final int[] WRONG = new int[15]; //자주틀리는발음횟수
     static final ArrayList<String> WRONG_P = new ArrayList<>(); //자주틀리는발음
-
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+
 
     @Nullable
     @Override
@@ -57,7 +58,6 @@ public class phoneticfragment extends Fragment {
         View view = inflater.inflate(R.layout.phoneticfragment,container,false);
         super.onCreateView(inflater, container, savedInstanceState);
         context = container.getContext();
-
 
 
         //setContentView(R.layout.activity_main);
@@ -84,7 +84,23 @@ public class phoneticfragment extends Fragment {
         mRecognizer.setRecognitionListener(recognitionListener);
 
         final ImageView iv = view.findViewById(R.id.iv);
-        gif();
+        final RequestManager glide = Glide.with(this);
+
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(0).toString())) Glide.with(this).load(R.raw.pronunciation).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(1).toString())) Glide.with(this).load(R.raw.says).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(2).toString())) Glide.with(this).load(R.raw.hangeul).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(3).toString())) Glide.with(this).load(R.raw.spell).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(WORD.get(4).toString())) Glide.with(this).load(R.raw.univ).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(0).toString())) Glide.with(this).load(R.raw.hello).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(1).toString())) Glide.with(this).load(R.raw.ntmy).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(2).toString())) Glide.with(this).load(R.raw.hdyd).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(3).toString())) Glide.with(this).load(R.raw.thanks).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(4).toString())) Glide.with(this).load(R.raw.taketrouble).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(0).toString())) Glide.with(this).load(R.raw.gapbunsha).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(1).toString())) Glide.with(this).load(R.raw.sohackhang).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(2).toString())) Glide.with(this).load(R.raw.dengdengee).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(3).toString())) Glide.with(this).load(R.raw.naturemeet).into(iv);
+        if(vocabfragment.print.get(index).toString().equals(NEW.get(4).toString())) Glide.with(this).load(R.raw.worklifeb).into(iv);
 
         pre = (Button)view.findViewById(R.id.pre);
         next = (Button)view.findViewById(R.id.next);
@@ -110,7 +126,21 @@ public class phoneticfragment extends Fragment {
                     Hbutton.setText("\u2606");
                 }
                 stext.setText(null);
-                gif();
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(0).toString())) glide.load(R.raw.pronunciation).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(1).toString())) glide.load(R.raw.says).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(2).toString())) glide.load(R.raw.hangeul).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(3).toString())) glide.load(R.raw.spell).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(4).toString())) glide.load(R.raw.univ).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(0).toString())) glide.load(R.raw.hello).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(1).toString())) glide.load(R.raw.ntmy).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(2).toString())) glide.load(R.raw.hdyd).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(3).toString())) glide.load(R.raw.thanks).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(4).toString())) glide.load(R.raw.taketrouble).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(0).toString())) glide.load(R.raw.gapbunsha).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(1).toString())) glide.load(R.raw.sohackhang).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(2).toString())) glide.load(R.raw.dengdengee).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(3).toString())) glide.load(R.raw.naturemeet).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(4).toString())) glide.load(R.raw.worklifeb).into(iv);
             }
         });
 
@@ -129,7 +159,21 @@ public class phoneticfragment extends Fragment {
                     Hbutton.setText("\u2606");
                 }
                 stext.setText(null);
-                gif();
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(0).toString())) glide.load(R.raw.pronunciation).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(1).toString())) glide.load(R.raw.says).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(2).toString())) glide.load(R.raw.hangeul).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(3).toString())) glide.load(R.raw.spell).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(WORD.get(4).toString())) glide.load(R.raw.univ).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(0).toString())) glide.load(R.raw.hello).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(1).toString())) glide.load(R.raw.ntmy).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(2).toString())) glide.load(R.raw.hdyd).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(3).toString())) glide.load(R.raw.thanks).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(4).toString())) glide.load(R.raw.taketrouble).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(0).toString())) glide.load(R.raw.gapbunsha).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(1).toString())) glide.load(R.raw.sohackhang).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(2).toString())) glide.load(R.raw.dengdengee).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(3).toString())) glide.load(R.raw.naturemeet).into(iv);
+                if(vocabfragment.print.get(index).toString().equals(NEW.get(4).toString())) glide.load(R.raw.worklifeb).into(iv);
             }
         });
 
@@ -277,22 +321,4 @@ public class phoneticfragment extends Fragment {
         }
     };
 
-    void gif(){ //발음마다 정해진 gif파일 불러오기
-        if(vocabfragment.print.get(index).toString().equals(WORD.get(0).toString())) Glide.with(this).load(R.raw.pronunciation).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(WORD.get(1).toString())) Glide.with(this).load(R.raw.says).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(WORD.get(2).toString())) Glide.with(this).load(R.raw.hangeul).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(WORD.get(3).toString())) Glide.with(this).load(R.raw.spell).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(WORD.get(4).toString())) Glide.with(this).load(R.raw.univ).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(0).toString())) Glide.with(this).load(R.raw.hello).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(1).toString())) Glide.with(this).load(R.raw.ntmy).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(2).toString())) Glide.with(this).load(R.raw.hdyd).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(3).toString())) Glide.with(this).load(R.raw.thanks).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(SENTENCE.get(4).toString())) Glide.with(this).load(R.raw.taketrouble).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(NEW.get(0).toString())) Glide.with(this).load(R.raw.gapbunsha).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(NEW.get(1).toString())) Glide.with(this).load(R.raw.sohackhang).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(NEW.get(2).toString())) Glide.with(this).load(R.raw.dengdengee).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(NEW.get(3).toString())) Glide.with(this).load(R.raw.naturemeet).into(iv);
-        if(vocabfragment.print.get(index).toString().equals(NEW.get(4).toString())) Glide.with(this).load(R.raw.worklifeb).into(iv);
-
-    }
 }
